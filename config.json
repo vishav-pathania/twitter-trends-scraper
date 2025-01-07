@@ -1,0 +1,14 @@
+{
+    "mongodb": {
+      "uri": "your_mongodb_atlas_uri",
+      "db_name": "twitter_trends"
+    },
+    "twitter": {
+      "username": "your_twitter_username",
+      "password": "your_twitter_password"
+    },
+    "proxymesh": {
+      "url": "http://username:password@proxymesh_url"
+    }
+  }
+  

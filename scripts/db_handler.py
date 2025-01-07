@@ -1,4 +1,4 @@
-# scripts/db_handler.py
+
 from pymongo import MongoClient
 
 def save_to_mongodb(data, mongo_uri="mongodb://localhost:27017", db_name="twitter_trends", collection_name="trends"):

@@ -20,9 +20,9 @@ This project is a web application that scrapes trending topics on Twitter, store
 ## Requirements
 Before running the project, ensure you have the following installed:
 
-**Python 3.x**
-**MongoDB (locally or using MongoDB Atlas)**
-**Python dependencies (listed in requirements.txt)**
+-**Python 3.x**
+-**MongoDB (locally or using MongoDB Atlas)**
+-**Python dependencies (listed in requirements.txt)**
 
 ## Installation
 

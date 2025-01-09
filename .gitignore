@@ -1,1 +1,54 @@
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+*.so
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
 /myenv
+
+# Flask instance folder
+instance/
+
+# Flask configuration file (potentially sensitive data)
+*.env
+
+.DS_Store
+
+Thumbs.db
+
+.vscode/
+.idea/
+
+.idea/
+
+
+.ipynb_checkpoints/
+
+
+.docker/
+
+migrations/
+
+.cache/
+
+.coverage
+*.cover
+*.coverage.*
+
+.mypy_cache/
+
+pylint-report.txt
+pylint-global-ast.yaml
+
+*.log
+
+*.sqlite3
+*.db

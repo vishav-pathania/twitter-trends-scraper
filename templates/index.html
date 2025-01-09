@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +7,60 @@
 </head>
 <body>
     <h1>Twitter Trends</h1>
-    <button onclick="runScript()">Click here to run the script</button>
-    <div id="result"></div>
+
+    <!-- Display button only if no data from MongoDB -->
+    <div id="no-data-button">
+        <button onclick="runScript()">Click here to run the script</button>
+    </div>
+
+    <!-- Display results after script execution -->
+    <div id="result" style="margin-top: 20px;"></div>
 
     <script>
+        // Check if there is any data from the backend (MongoDB)
+        window.onload = async () => {
+            const response = await fetch('/');  // Request to fetch data from MongoDB on page load
+            const data = await response.json();
+            
+            if (data && data.timestamp) {
+                // Data exists
+                displayData(data);
+            } else {
+                // Data doesn't exist, show button to run script
+                document.getElementById('no-data-button').style.display = 'block';
+                document.getElementById('result').style.display = 'none';
+            }
+        };
+
+        // Function to run the script and fetch new data
         async function runScript() {
             const response = await fetch('/run-script');
-            const data = await response.json();
+            const data = await response.json();  // Get the data returned from the backend
 
-            document.getElementById('result').innerHTML = `
-                <p>These are the most happening topics as on ${data.timestamp}:</p>
+            // content to display
+            displayData(data);
+        }
+
+        // Function to display data
+        function displayData(data) {
+            const resultDiv = document.getElementById('result');
+            const timestamp = new Date(data.timestamp).toLocaleString();  // Format timestamp
+            const trendsList = data.trends.map(trend => `<li>${trend}</li>`).join('');
+            const jsonExtract = JSON.stringify(data.mongoData, null, 2);  // Converting MongoDB data to a JSON string
+
+            // Hiding the "run script" button and showing results
+            document.getElementById('no-data-button').style.display = 'none';
+            resultDiv.style.display = 'block';
+
+            resultDiv.innerHTML = `
+                <p>These are the most happening topics as on ${timestamp}:</p>
                 <ul>
-                    ${data.trends.map(trend => `<li>${trend}</li>`).join('')}
+                    ${trendsList}
                 </ul>
                 <p>The IP address used for this query was ${data.ip_address}.</p>
+                <pre>Here's a JSON extract of this record from MongoDB:</pre>
+                <pre>${jsonExtract}</pre>
+                <button onclick="runScript()">Click here to run the query again</button>
             `;
         }
     </script>

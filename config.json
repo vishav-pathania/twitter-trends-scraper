@@ -1,14 +1,14 @@
 {
     "mongodb": {
-      "uri": "your_mongodb_atlas_uri",
+      "uri": "mongodb+srv://<db_username>:<db_password>@<database_name>.pycwj.mongodb.net/?retryWrites=true&w=majority&appName=<project_name>",
       "db_name": "twitter_trends"
     },
     "twitter": {
-      "username": "your_twitter_username",
-      "password": "your_twitter_password"
+      "useremail": "user_email",
+      "username": "user_name",
+      "password": "user_password"
     },
     "proxymesh": {
-      "url": "http://username:password@proxymesh_url"
+      "url": "http://username:userpassword@us.proxymesh.com:port"
     }
   }
-  

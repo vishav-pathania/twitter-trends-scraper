@@ -1,3 +1,4 @@
 Flask
 selenium
 pymongo
+webdriver-manager
